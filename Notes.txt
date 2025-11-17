@@ -1,0 +1,43 @@
+# Django Pagination (page_obj)
+Notes:-
+  - When you use Django’s "generic ListView" with "paginate_by = 5",
+   " Django automatically creates a Paginator object behind the scenes".
+  - "page_obj" is the "current page object" (an instance of Page from django.core.paginator).
+
+## Common Attributes of page_obj
+- "page_obj.has_next" → Boolean
+  - "True" if there is another page after the current one.
+  - "False" if you’re already on the last page.
+- "page_obj.next_page_number" → Integer
+  - The number of the next page (e.g., if you’re on page 1, this returns 2).
+  - Only valid if "has_next" is "True".
+- "page_obj.has_previous" → Boolean
+  - "True" if there is a page before the current one.
+- "page_obj.previous_page_number" → Integer
+  - The number of the previous page.
+- "page_obj.number" → Integer
+  - The current page number.
+- "page_obj.paginator.num_pages" → Integer
+  - Total number of pages.
+
+
+# Faker  [https://faker.readthedocs.io/en/master/]
+CMDS:
+```
+- python manage.py shell
+```
+
+```
+- from sim.models import <Your-Model>
+- from faker import Faker
+- fake = Faker()
+- for i in range(100):
+    sentences = ' '.join(fake.sentences(5))
+    Article.objects.create(
+        title=fake.sentence(),
+        content=sentences,
+        photo_url=f"https://picsum.photos/seed/{i+1}/600"
+    )
+```
+
+# Source  [https://tomdekan.com/articles/infinite-scroll-htmx-django]
